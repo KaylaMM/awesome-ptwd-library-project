@@ -1,0 +1,28 @@
+<h1>Edit {{ foundBook.title }}</h1>
+
+<form action="/books/{{foundBook._id}}/update" method="POST">
+  <label for="title-input"> Title </label>
+  <input type="text" name="title" id="title-input" value="{{ foundBook.title }}">
+  <br>
+
+  <label for="author-select"> Author </label>
+  <select name="author" id="author-select">
+    <option disable selected value="{{foundBook.author._id}}">
+      {{foundBook.author.firstName}}
+      {{foundBook.author.lastName}}
+    </option>
+    {{#each almostAllAuthors}}
+      <option value="{{this._id}}"> {{this.firstName}} {{ this.lastName }} </option>
+    {{/each}}
+  </select>
+  <br>
+
+  <label for="description-input"> Description </label>
+  <input type="text" name="description" id="description-input" value="{{foundBook.description}}">
+  <br>
+
+  <label for="rating-input"> Rating </label>
+  <input type="number" name="rating" id="rating-input" value="{{foundBook.rating}}">
+
+  <button type="submit"> Save the updates </button>
+</form>

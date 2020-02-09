@@ -1,0 +1,25 @@
+<h1>Create a new book</h1>
+
+<form action="/books" method="POST">
+  <label for="title-input"> Title </label>
+  <input type="text" name="title" id="title-input">
+  <br>
+
+  <label for="author-select"> Author </label>
+  <select name="author" id="author-select">
+    <option disable selected value=""></option>
+    {{#each availableAuthors}}
+      <option value="{{this._id}}"> {{this.firstName}} {{ this.lastName }} </option>
+    {{/each}}
+  </select>
+  <br>
+
+  <label for="description-input"> Description </label>
+  <input type="text" name="description" id="description-input">
+  <br>
+
+  <label for="rating-input"> Rating </label>
+  <input type="number" name="rating" id="rating-input">
+
+  <button type="submit"> Save the book </button>
+</form>
